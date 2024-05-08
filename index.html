@@ -31,9 +31,7 @@
         }
 
         .btn {
-
             border: none;
-
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
@@ -51,6 +49,14 @@
         .negue {
             background-color: #f44336;
             color: white;
+        }
+
+        .image {
+            /* display: none; */
+            /* position: absolute; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 
@@ -91,7 +97,7 @@
                 // Gera coordenadas aleatórias dentro dos limites da tela e sem colidir com a última posição
                 let x, y;
                 do {
-                    x = Math. floor(Math. random() * (maxX - minX + 1)) + minX;
+                    x = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
                     y = Math.floor(Math.random() * (maxY - minY - 1)) + minY;
                 } while (Math.abs(x - lastX) < 50 && Math.abs(y - lastY) < 50);
 
@@ -100,6 +106,14 @@
 
                 $(this).css('transform', `translate(${x}px, ${y}px)`);
             });
+
+            $('.confirme').click(function(){
+                $('.content').html(`
+                    <div class="image">
+                        <img src="https://media1.tenor.com/m/ArOvmHXqzEMAAAAC/mr-bean-weird-face.gif" alt="" srcset="">
+                    </div>
+                `)
+            })
 
         });
 
