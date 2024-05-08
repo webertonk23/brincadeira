@@ -72,22 +72,35 @@
         $(document).ready(function () {
             let lastX = 0;
             let lastY = 0;
+            // Obtém as dimensões da janela do navegador
+            const windowWidth = $(window).width();
+            const windowHeight = $(window).height();
 
             $(".negue").mouseover(function () {
-                const windowWidth = $(window).width();
-                const windowHeight = $(window).height();
+                // Obtém a posição atual do botão
+                const buttonPosition = $(this).offset();
+                const buttonWidth = $(this).outerWidth();
+                const buttonHeight = $(this).outerHeight();
+
+                // Limites para onde o botão pode se mover sem sair da tela
+                const minX = -100;
+                const maxX = 100;
+                const minY = -100;
+                const maxY = 100;
+
+                // Gera coordenadas aleatórias dentro dos limites da tela e sem colidir com a última posição
                 let x, y;
                 do {
-                    x = Math.floor(Math.random() * (windowWidth - 1000)) + 50;
-                    y = Math.floor(Math.random() * (windowHeight - 1000)) + 50;
-                } while (Math.abs(x - lastX) < 50 && Math.abs(y - lastY) < 10);
+                    x = Math. floor(Math. random() * (maxX - minX + 1)) + minX;
+                    y = Math.floor(Math.random() * (maxY - minY - 1)) + minY;
+                } while (Math.abs(x - lastX) < 50 && Math.abs(y - lastY) < 50);
 
                 lastX = x;
                 lastY = y;
 
-                console.log($(this), x, y, `translate(${x}px, ${y}px)`);
                 $(this).css('transform', `translate(${x}px, ${y}px)`);
             });
+
         });
 
     </script>
